@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {DepartmentService} from "./services/department.service";
+import {EmployeeService} from "./services/employee.service";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'simple-erp';
+  constructor(private d: EmployeeService) {
+    d.delete(3).subscribe(res => {
+      console.log(res)
+    },
+      error => {
+        console.log(error)
+      }
+      )
+  }
+
 }
