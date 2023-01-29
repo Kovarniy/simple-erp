@@ -28,7 +28,7 @@ export class EmployeesListComponent implements OnInit {
 
     this.employeeService.delete(id)
       .subscribe(res => {
-
+        this.employees =this.employees?.filter(emp => emp.id !== id);
       });
   }
 

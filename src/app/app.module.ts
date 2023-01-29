@@ -6,6 +6,7 @@ import { HttpClientModule} from "@angular/common/http";
 
 import { AppComponent } from './app.component';
 import {SidebarNavigationComponent} from "./components/sidebar-navigation/sidebar-navigation.component";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import {SidebarNavigationComponent} from "./components/sidebar-navigation/sideba
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

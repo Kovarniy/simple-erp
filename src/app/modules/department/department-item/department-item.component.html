@@ -1,6 +1,13 @@
-{{department?.name}}
+<div class="department">
 
-{{department?.description}}
+  <div class="department__info">
+    Департамент: {{department?.name}}
+    Описание: {{department?.description}}
+  </div>
 
-<button (click)="onEdit()">Edit</button>
-<button (click)="onDelete()">Delete</button>
+  <div class="department__actions">
+    <button (click)="onEdit()">Edit</button>
+    <button (click)="onDelete()">Delete</button>
+  </div>
+
+</div>

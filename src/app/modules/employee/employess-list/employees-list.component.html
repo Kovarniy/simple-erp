@@ -1,8 +1,6 @@
-<ul>
-  <li *ngFor="let employee of employees">
-    <app-employee-item [employee]="employee"
-                       (delete)="onDelete(employee.id)"
-    >
-    </app-employee-item>
-  </li>
-</ul>
+<ng-container *ngFor="let employee of employees">
+  <app-employee-item [employee]="employee"
+                     (delete)="onDelete(employee.id)"
+  >
+  </app-employee-item>
+</ng-container>

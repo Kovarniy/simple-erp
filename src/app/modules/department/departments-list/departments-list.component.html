@@ -1,8 +1,17 @@
-<ul>
-  <li *ngFor="let department of departments">
-    <app-department-item [department]="department"
-                         (delete)="onDelete(department.id)"
-    >
-    </app-department-item>
-  </li>
-</ul>
+<button (click)="onOpenAddModal(addDepartment)">
+  Добавить
+</button>
+<ng-container *ngFor="let department of departments">
+  <app-department-item [department]="department"
+                       (delete)="onDelete(department.id)"
+  >
+  </app-department-item>
+</ng-container>
+
+<ng-template #addDepartment>
+  <div class="modal-body">
+    <app-department-create (closeModal)="modalRef?.hide()">
+
+    </app-department-create>
+  </div>
+</ng-template>

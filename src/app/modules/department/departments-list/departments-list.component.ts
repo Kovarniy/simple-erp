@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, TemplateRef} from '@angular/core';
 import {DepartmentService} from "../../../services/department.service";
 import {Department} from "../../../models/department";
+import {BsModalRef, BsModalService} from "ngx-bootstrap/modal";
 
 @Component({
   selector: 'app-departments-list',
@@ -10,8 +11,10 @@ import {Department} from "../../../models/department";
 export class DepartmentsListComponent implements OnInit {
 
   departments?: Department[];
+  modalRef?: BsModalRef;
 
-  constructor(private departmentService: DepartmentService) { }
+  constructor(private departmentService: DepartmentService,
+              private modalService: BsModalService) { }
 
   ngOnInit(): void {
     this.departmentService.getAll().subscribe(departments => {
@@ -26,7 +29,14 @@ export class DepartmentsListComponent implements OnInit {
 
     this.departmentService.delete(id)
       .subscribe(res => {
-
+        this.departments =this.departments?.filter(dep => dep.id !== id);
     });
   }
+
+  onOpenAddModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template, {
+      keyboard: true
+    })
+  }
+
 }
