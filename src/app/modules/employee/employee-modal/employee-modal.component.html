@@ -1,0 +1,17 @@
+<input type="text" placeholder="Имя сотрудника"
+       [(ngModel)]="employee.firstName">
+<input type="text" placeholder="Фамилия сотрудника"
+       [(ngModel)]="employee.lastName">
+
+<ng-select [items]="departments"
+           bindLabel="name"
+           bindValue="id"
+           [(ngModel)]="departmentId">
+</ng-select>
+
+<button (click)="onChangeEmployee()">
+  Сохранить
+</button>
+<button (click)="onCloseModal()">
+  Отменить
+</button>

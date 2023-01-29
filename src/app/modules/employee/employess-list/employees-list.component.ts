@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import {Department} from "../../../models/department";
-import {DepartmentService} from "../../../services/department.service";
+import {Component, OnInit, TemplateRef} from '@angular/core';
 import {EmployeeService} from "../../../services/employee.service";
 import {Employee} from "../../../models/employee";
+import {BsModalRef, BsModalService} from "ngx-bootstrap/modal";
+import {DepartmentService} from "../../../services/department.service";
+import {switchMap} from "rxjs";
 
 @Component({
   selector: 'app-employees-list',
@@ -13,11 +14,21 @@ export class EmployeesListComponent implements OnInit {
 
   employees?: Employee[];
 
-  constructor(private employeeService: EmployeeService) { }
+  modalRef?: BsModalRef;
+
+  constructor(private employeeService: EmployeeService,
+              private departmentService: DepartmentService,
+              private modalService: BsModalService) { }
 
   ngOnInit(): void {
-    this.employeeService.getAll().subscribe(employees => {
-      this.employees = employees;
+    this.employeeService.getAll()
+      .pipe(switchMap(employees => {
+        this.employees = employees;
+
+        return this.departmentService.getAll()
+      }))
+      .subscribe(departments => {
+
     });
   }
 
@@ -29,6 +40,26 @@ export class EmployeesListComponent implements OnInit {
     this.employeeService.delete(id)
       .subscribe(res => {
         this.employees =this.employees?.filter(emp => emp.id !== id);
+      });
+  }
+
+  onOpenAddModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template, {
+      keyboard: true
+    })
+  }
+
+  onAddEmployee(employee: Employee) {
+    this.employeeService.add(employee)
+      .subscribe(res => {
+        this.employees?.push(employee);
+        this.modalRef?.hide();
+      });
+  }
+
+  onChangeEmployee(employee: Employee) {
+    this.employeeService.update(employee)
+      .subscribe(res => {
       });
   }
 

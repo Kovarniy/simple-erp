@@ -1,13 +1,15 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
-import {map} from "rxjs/operators";
+import {BehaviorSubject, Observable} from "rxjs";
+import {map, tap} from "rxjs/operators";
 import {Department, DepartmentResponse} from "../models/department";
 
 @Injectable({
   providedIn: 'root'
 })
 export class DepartmentService {
+
+  private departments$:BehaviorSubject<Department[]> = new BehaviorSubject<Department[]>([]);
 
   constructor(private http: HttpClient) {
   }
@@ -18,8 +20,13 @@ export class DepartmentService {
   public getAll(): Observable<Department[]> {
     return this.http.get<DepartmentResponse>('api/departments')
       .pipe(
-        map(departmets => departmets.values
-        ))
+        map(departments => departments.values),
+        tap(departments => this.departments$.next(departments))
+      )
+  }
+
+  public getDepartments() {
+    return this.departments$;
   }
 
   /**

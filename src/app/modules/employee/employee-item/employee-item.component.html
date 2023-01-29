@@ -1,8 +1,26 @@
-{{employee?.firstName}}
+<div class="employee">
+  <div class="employee__info">
+    Имя сотрудника
+    {{employee?.firstName}}
 
-{{employee?.lastName}}
+    Фамалия сотрудника
+    {{employee?.lastName}}
 
-{{employee?.departmentId}}
+    Id депаратамента
+    {{employee?.departmentId}}
+  </div>
 
-<button (click)="onEdit()">Edit</button>
-<button (click)="onDelete()">Delete</button>
+  <div class="employee__actions">
+    <button (click)="onOpenEditModal(editDepartment)">Edit</button>
+    <button (click)="onDelete()">Delete</button>
+  </div>
+</div>
+
+<ng-template #editDepartment>
+  <div class="modal-body">
+    <app-employee-modal [setEmployee]="bufferEmployee"
+                        (closeModal)="onCloseModal()"
+                        (changeEmployee)="onChangeEmployee($event)">
+    </app-employee-modal>
+  </div>
+</ng-template>

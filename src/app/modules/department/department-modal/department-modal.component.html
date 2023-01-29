@@ -1,5 +1,7 @@
-<input type="text" [(ngModel)]="department.name">
-<input type="text" [(ngModel)]="department.description">
+<input type="text" placeholder="Название организации"
+       [(ngModel)]="department.name">
+<input type="text" placeholder="Описание организации"
+       [(ngModel)]="department.description">
 
 <button (click)="onChangeDepartment()">
   Сохранить

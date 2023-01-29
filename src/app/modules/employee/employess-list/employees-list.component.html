@@ -1,6 +1,19 @@
+<button (click)="onOpenAddModal(addEmployee)">
+  Добавить
+</button>
+
 <ng-container *ngFor="let employee of employees">
   <app-employee-item [employee]="employee"
+                     (change)="onChangeEmployee(employee)"
                      (delete)="onDelete(employee.id)"
   >
   </app-employee-item>
 </ng-container>
+
+<ng-template #addEmployee>
+  <div class="modal-body">
+    <app-employee-modal (closeModal)="modalRef?.hide()"
+                        (changeEmployee)="onAddEmployee($event)">
+    </app-employee-modal>
+  </div>
+</ng-template>

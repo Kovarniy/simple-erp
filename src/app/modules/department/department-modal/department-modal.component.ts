@@ -17,7 +17,7 @@ export class DepartmentModalComponent implements OnInit {
       return;
     }
 
-    this.department = JSON.parse(JSON.stringify(dep));
+    this.department = dep;
   }
 
   department!: Department;

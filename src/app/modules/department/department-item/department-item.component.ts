@@ -46,4 +46,5 @@ export class DepartmentItemComponent implements OnInit {
   onCloseModal() {
     this.modalRef?.hide();
   }
+
 }

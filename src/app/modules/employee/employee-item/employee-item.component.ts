@@ -1,5 +1,6 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, TemplateRef} from '@angular/core';
 import {Employee} from "../../../models/employee";
+import {BsModalRef, BsModalService} from "ngx-bootstrap/modal";
 
 @Component({
   selector: 'app-employee-item',
@@ -8,12 +9,17 @@ import {Employee} from "../../../models/employee";
 })
 export class EmployeeItemComponent implements OnInit {
 
-  @Input() employee?: Employee;
+  @Input() employee!: Employee;
 
   @Output() delete = new EventEmitter<void>();
 
-  @Output() edit = new EventEmitter<void>();
-  constructor() { }
+  @Output() change = new EventEmitter<void>();
+
+  modalRef?: BsModalRef;
+
+  bufferEmployee!: Employee;
+
+  constructor(private modalService: BsModalService) { }
 
   ngOnInit(): void {
   }
@@ -22,8 +28,24 @@ export class EmployeeItemComponent implements OnInit {
     this.delete.emit();
   }
 
-  onEdit() {
-    this.edit.emit();
+  onOpenEditModal(template: TemplateRef<any>) {
+    this.bufferEmployee = JSON.parse(JSON.stringify(this.employee));
+    this.modalRef = this.modalService.show(template, {
+      keyboard: true
+    })
+  }
+
+  onChangeEmployee(_employee: Employee) {
+    this.employee.lastName = _employee.lastName;
+    this.employee.firstName = _employee.firstName;
+    this.employee.departmentId = _employee.departmentId;
+
+    this.modalRef?.hide();
+    this.change.emit();
+  }
+
+  onCloseModal() {
+    this.modalRef?.hide();
   }
 
 }
