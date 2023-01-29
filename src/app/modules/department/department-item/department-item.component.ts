@@ -1,5 +1,6 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, TemplateRef} from '@angular/core';
 import {Department} from "../../../models/department";
+import {BsModalRef, BsModalService} from "ngx-bootstrap/modal";
 
 @Component({
   selector: 'app-department-item',
@@ -8,13 +9,17 @@ import {Department} from "../../../models/department";
 })
 export class DepartmentItemComponent implements OnInit {
 
-  @Input() department?: Department;
+  @Input() department!: Department;
 
   @Output() delete = new EventEmitter<void>();
 
-  @Output() edit = new EventEmitter<void>();
+  @Output() change = new EventEmitter<void>();
 
-  constructor() { }
+  modalRef?: BsModalRef;
+
+  bufferDepartment!: Department;
+
+  constructor(private modalService: BsModalService) { }
 
   ngOnInit(): void {
   }
@@ -23,8 +28,22 @@ export class DepartmentItemComponent implements OnInit {
     this.delete.emit();
   }
 
-  onEdit() {
-    this.edit.emit();
+  onOpenEditModal(template: TemplateRef<any>) {
+    this.bufferDepartment = JSON.parse(JSON.stringify(this.department));
+    this.modalRef = this.modalService.show(template, {
+      keyboard: true
+    })
   }
 
+  onChangeDepartment(_department: Department) {
+    this.department.name = _department.name;
+    this.department.description = _department.description;
+    this.modalRef?.hide();
+
+    this.change.emit();
+  }
+
+  onCloseModal() {
+    this.modalRef?.hide();
+  }
 }

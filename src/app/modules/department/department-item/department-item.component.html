@@ -6,8 +6,17 @@
   </div>
 
   <div class="department__actions">
-    <button (click)="onEdit()">Edit</button>
+    <button (click)="onOpenEditModal(editDepartment)">Edit</button>
     <button (click)="onDelete()">Delete</button>
   </div>
 
 </div>
+
+<ng-template #editDepartment>
+  <div class="modal-body">
+    <app-department-modal [setDepartment]="bufferDepartment"
+                          (closeModal)="onCloseModal()"
+                          (changeDepartment)="onChangeDepartment($event)">
+    </app-department-modal>
+  </div>
+</ng-template>

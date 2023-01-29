@@ -39,4 +39,17 @@ export class DepartmentsListComponent implements OnInit {
     })
   }
 
+  onAddDepartment(department: Department) {
+    this.departmentService.add(department)
+      .subscribe(res => {
+        this.departments?.push(department);
+        this.modalRef?.hide();
+      });
+  }
+
+  onChangeDepartment(department: Department) {
+    this.departmentService.update(department)
+      .subscribe(res => {
+      });
+  }
 }

@@ -3,6 +3,7 @@
 </button>
 <ng-container *ngFor="let department of departments">
   <app-department-item [department]="department"
+                       (change)="onChangeDepartment(department)"
                        (delete)="onDelete(department.id)"
   >
   </app-department-item>
@@ -10,8 +11,8 @@
 
 <ng-template #addDepartment>
   <div class="modal-body">
-    <app-department-create (closeModal)="modalRef?.hide()">
-
-    </app-department-create>
+    <app-department-modal (closeModal)="modalRef?.hide()"
+                          (changeDepartment)="onAddDepartment($event)">
+    </app-department-modal>
   </div>
 </ng-template>
