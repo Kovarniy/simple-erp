@@ -16,7 +16,7 @@ export class DepartmentService {
    * Получить все департаменты.
    */
   public getAll(): Observable<Department[]> {
-    return this.http.get<DepartmentResponse>('departments')
+    return this.http.get<DepartmentResponse>('api/departments')
       .pipe(
         map(departmets => departmets.values
         ))
@@ -27,7 +27,7 @@ export class DepartmentService {
    * @param id идентификатор депариамента.
    */
   public getById(id: number): Observable<Department[]> {
-    return this.http.get<DepartmentResponse>('departments/' + id)
+    return this.http.get<DepartmentResponse>('api/departments/' + id)
       .pipe(
         map(departmets => departmets.values
         ))
@@ -38,7 +38,7 @@ export class DepartmentService {
    * @param department
    */
   public add(department: Department): Observable<number> {
-    return this.http.post('departments/add', department)
+    return this.http.post('api/departments/add', department)
       .pipe(
         map((response: any) => response.status)
       )
@@ -49,7 +49,7 @@ export class DepartmentService {
    * @param department
    */
   public update(department: Department): Observable<number> {
-    return this.http.put('departments', department)
+    return this.http.put('api/departments', department)
       .pipe(
         map((response: any) => response.status)
       )
@@ -60,7 +60,7 @@ export class DepartmentService {
    * @param id идентификатор департамента.
    */
   public delete(id: number): Observable<any> {
-    return this.http.delete('departments/delete/' + id)
+    return this.http.delete('api/departments/delete/' + id)
       .pipe(
         map((response: any) => response.status)
       )

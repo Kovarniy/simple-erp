@@ -16,7 +16,7 @@ export class EmployeeService {
    * Получить всех работников.
    */
   public getAll(): Observable<Employee[]> {
-    return this.http.get<EmployeeResponse>('employees')
+    return this.http.get<EmployeeResponse>('api/employees')
       .pipe(
         map(employee => employee.values
         ))
@@ -27,7 +27,7 @@ export class EmployeeService {
    * @param id идентификатор работника.
    */
   public getById(id: number): Observable<Employee[]> {
-    return this.http.get<EmployeeResponse>('employees/' + id)
+    return this.http.get<EmployeeResponse>('api/employees/' + id)
       .pipe(
         map(employee => employee.values
         ))
@@ -38,7 +38,7 @@ export class EmployeeService {
    * @param employee
    */
   public add(employee: Employee): Observable<number> {
-    return this.http.post('employees/add', employee)
+    return this.http.post('api/employees/add', employee)
       .pipe(
         map((response: any) => response.status)
       )
@@ -49,7 +49,7 @@ export class EmployeeService {
    * @param employee
    */
   public update(employee: Employee): Observable<number> {
-    return this.http.put('employees', employee)
+    return this.http.put('api/employees', employee)
       .pipe(
         map((response: any) => response.status)
       )
@@ -60,7 +60,7 @@ export class EmployeeService {
    * @param id идентификатор работника.
    */
   public delete(id: number): Observable<any> {
-    return this.http.delete('employees/delete/' + id)
+    return this.http.delete('api/employees/delete/' + id)
       .pipe(
         map((response: any) => response.status)
       )
