@@ -8,14 +8,7 @@ import {EmployeeService} from "./services/employee.service";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  constructor(private d: EmployeeService) {
-    d.delete(3).subscribe(res => {
-      console.log(res)
-    },
-      error => {
-        console.log(error)
-      }
-      )
+  constructor() {
   }
 
 }

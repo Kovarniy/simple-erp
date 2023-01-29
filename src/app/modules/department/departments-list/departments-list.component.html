@@ -1,0 +1,8 @@
+<ul>
+  <li *ngFor="let department of departments; let indx">
+    <app-department-item [department]="department"
+                         (delete)="onDelete(department.id)"
+    >
+    </app-department-item>
+  </li>
+</ul>

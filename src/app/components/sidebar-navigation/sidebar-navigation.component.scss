@@ -1,0 +1,40 @@
+.sidebar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #3F52B5;
+  height: 100vh;
+}
+
+.sidebar__list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.sidebar__item {
+  color: #FFFFFF;
+  padding: 20px;
+  font-size: 18px;
+  text-align: left;
+}
+
+.sidebar__item:hover {
+  background-color: #142476;
+}
+
+.sidebar__item--active {
+  background-color: #324191;
+}
+
+@media (min-width: 768px) {
+  .sidebar__item {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 992px) {
+  .sidebar__item {
+    font-size: 26px;
+  }
+}
