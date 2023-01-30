@@ -3,6 +3,11 @@ export interface Employee {
   firstName: string;
   lastName: string;
   departmentId: number;
+
+  /**
+   * only front
+   */
+  departmentName?: string;
 }
 
 export interface EmployeeResponse {

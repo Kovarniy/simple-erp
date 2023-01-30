@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output, TemplateRef} from '@angular/core';
 import {Department} from "../../../models/department";
 import {BsModalRef, BsModalService} from "ngx-bootstrap/modal";
+import { faRemove, faEdit } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-department-item',
@@ -18,6 +19,9 @@ export class DepartmentItemComponent implements OnInit {
   modalRef?: BsModalRef;
 
   bufferDepartment!: Department;
+
+  faRemove = faRemove;
+  faEdit = faEdit;
 
   constructor(private modalService: BsModalService) { }
 

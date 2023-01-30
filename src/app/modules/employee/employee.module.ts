@@ -8,6 +8,7 @@ import {BsModalService, ModalModule} from "ngx-bootstrap/modal";
 import {FormsModule} from "@angular/forms";
 import {NgSelectModule} from "@ng-select/ng-select";
 import {ScrollingModule} from '@angular/cdk/scrolling';
+import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
     EmployeeRoutingModule,
     FormsModule,
     NgSelectModule,
-    ScrollingModule
+    ScrollingModule,
+    FontAwesomeModule
   ],
   providers: [
     BsModalService

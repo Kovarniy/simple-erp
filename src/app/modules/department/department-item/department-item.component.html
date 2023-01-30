@@ -6,8 +6,16 @@
   </div>
 
   <div class="department__actions">
-    <button (click)="onOpenEditModal(editDepartment)">Edit</button>
-    <button (click)="onDelete()">Delete</button>
+    <fa-icon [icon]="faEdit"
+             [size]="'xl'"
+             class="clickable-element action-item"
+             (click)="onOpenEditModal(editDepartment)">
+    </fa-icon>
+    <fa-icon [icon]="faRemove"
+             [size]="'xl'"
+             class="clickable-element action-item"
+             (click)="onDelete()">
+    </fa-icon>
   </div>
 
 </div>

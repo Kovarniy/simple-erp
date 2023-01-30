@@ -1,22 +1,36 @@
 <div class="employee">
   <div class="employee__info">
-    Имя сотрудника
-    {{employee?.firstName}}
+    <div class="employee__item">
+      Имя сотрудника:
+      {{employee?.firstName}}
+    </div>
 
-    Фамалия сотрудника
-    {{employee?.lastName}}
+    <div class="employee__item">
+      Фамалия сотрудника:
+      {{employee?.lastName}}
+    </div>
 
-    Id депаратамента
-    {{employee?.departmentId}}
+    <div class="employee__item">
+      Депаратамент:
+      {{employee?.departmentName}}
+    </div>
   </div>
 
   <div class="employee__actions">
-    <button (click)="onOpenEditModal(editDepartment)">Edit</button>
-    <button (click)="onDelete()">Delete</button>
+    <fa-icon [icon]="faEdit"
+             [size]="'xl'"
+             class="clickable-element action-item"
+             (click)="onOpenEditModal(editEmployee)">
+    </fa-icon>
+    <fa-icon [icon]="faRemove"
+             [size]="'xl'"
+             class="clickable-element action-item"
+             (click)="onDelete()">
+    </fa-icon>
   </div>
 </div>
 
-<ng-template #editDepartment>
+<ng-template #editEmployee>
   <div class="modal-body">
     <app-employee-modal [setEmployee]="bufferEmployee"
                         (closeModal)="onCloseModal()"
