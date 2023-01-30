@@ -51,7 +51,8 @@ export class EmployeesListComponent implements OnInit {
 
   onAddEmployee(employee: Employee) {
     this.employeeService.add(employee)
-      .subscribe(res => {
+      .subscribe(id => {
+        employee.id = id;
         this.employees = [...this.employees, employee];
         this.modalRef?.hide();
       });

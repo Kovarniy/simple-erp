@@ -36,11 +36,12 @@ export class EmployeeService {
   /**
    * Добавить нового работника.
    * @param employee
+   * @return id добавленного объекта.
    */
   public add(employee: Employee): Observable<number> {
     return this.http.post('api/employees/add', employee)
       .pipe(
-        map((response: any) => response.status)
+        map((response: any) => response.values.insertId)
       )
   }
 

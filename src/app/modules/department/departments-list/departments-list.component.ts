@@ -41,7 +41,8 @@ export class DepartmentsListComponent implements OnInit {
 
   onAddDepartment(department: Department) {
     this.departmentService.add(department)
-      .subscribe(res => {
+      .subscribe(id => {
+        department.id = id;
         this.departments = [...this.departments, department]
         this.modalRef?.hide();
       });

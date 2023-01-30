@@ -41,13 +41,14 @@ export class DepartmentService {
   }
 
   /**
-   * Добавить новый департамент
+   * Добавить новый департамент.
    * @param department
+   * @return id добавленного объекта.
    */
   public add(department: Department): Observable<number> {
     return this.http.post('api/departments/add', department)
       .pipe(
-        map((response: any) => response.status)
+        map((response: any) => response.values.insertId)
       )
   }
 
