@@ -1,7 +1,6 @@
-<button (click)="onOpenAddModal(addEmployee)"
-        class="btn btn-primary">
-  Добавить
-</button>
+<app-header [title]="'Список сотрудников'"
+            (addModal)="onOpenAddModal(addEmployee)">
+</app-header>
 
 <cdk-virtual-scroll-viewport appendOnly itemSize="12" class="virtual-scroll">
 <ng-container *cdkVirtualFor="let employee of employees">

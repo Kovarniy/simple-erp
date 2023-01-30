@@ -1,11 +1,21 @@
-<input type="text" placeholder="Название организации"
-       [(ngModel)]="department.name">
-<input type="text" placeholder="Описание организации"
-       [(ngModel)]="department.description">
+<div class="modal-item">
+  Название департамента:
+  <input type="text" placeholder="Название департамента:"
+         [(ngModel)]="department.name">
+</div>
 
-<button (click)="onChangeDepartment()">
-  Сохранить
-</button>
-<button (click)="onCloseModal()">
-  Отменить
-</button>
+<div class="modal-item">
+  Описание департамента:
+  <input type="text" placeholder="Описание департамента:"
+         [(ngModel)]="department.description">
+</div>
+
+<div class="modal-buttons">
+  <button (click)="onCloseModal()" class="modal-buttons--with-margin
+                                          btn i-btn-cancel">
+    Отменить
+  </button>
+  <button (click)="onChangeDepartment()" class="btn btn-primary">
+    Сохранить
+  </button>
+</div>

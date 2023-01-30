@@ -8,6 +8,7 @@ import {BsModalService, ModalModule} from "ngx-bootstrap/modal";
 import {FormsModule} from "@angular/forms";
 import {ScrollingModule} from "@angular/cdk/scrolling";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
+import {ErpCommonModule} from "../common/erp-common.module";
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
     ModalModule,
     FormsModule,
     ScrollingModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    ErpCommonModule
   ],
   providers: [
     BsModalService

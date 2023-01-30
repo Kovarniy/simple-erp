@@ -9,6 +9,7 @@ import {FormsModule} from "@angular/forms";
 import {NgSelectModule} from "@ng-select/ng-select";
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
+import {ErpCommonModule} from "../common/erp-common.module";
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
     FormsModule,
     NgSelectModule,
     ScrollingModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    ErpCommonModule
   ],
   providers: [
     BsModalService

@@ -1,26 +1,23 @@
-<!--<div class="list-page">-->
+<app-header [title]="'Список департаментов'"
+            (addModal)="onOpenAddModal(addDepartment)">
+</app-header>
 
-  <button (click)="onOpenAddModal(addDepartment)"
-          class="btn btn-primary">
-    Добавить
-  </button>
+<cdk-virtual-scroll-viewport appendOnly itemSize="12" class="virtual-scroll">
+  <ng-container *cdkVirtualFor="let department of departments">
+    <app-department-item [department]="department"
+                         (change)="onChangeDepartment(department)"
+                         (delete)="onDelete(department.id)"
+    >
+    </app-department-item>
+  </ng-container>
+</cdk-virtual-scroll-viewport>
 
-  <cdk-virtual-scroll-viewport appendOnly itemSize="12" class="virtual-scroll">
-    <ng-container *cdkVirtualFor="let department of departments">
-      <app-department-item [department]="department"
-                           (change)="onChangeDepartment(department)"
-                           (delete)="onDelete(department.id)"
-      >
-      </app-department-item>
-    </ng-container>
-  </cdk-virtual-scroll-viewport>
-
-  <ng-template #addDepartment>
-    <div class="modal-body">
-      <app-department-modal (closeModal)="modalRef?.hide()"
-                            (changeDepartment)="onAddDepartment($event)">
-      </app-department-modal>
-    </div>
-  </ng-template>
+<ng-template #addDepartment>
+  <div class="modal-body">
+    <app-department-modal (closeModal)="modalRef?.hide()"
+                          (changeDepartment)="onAddDepartment($event)">
+    </app-department-modal>
+  </div>
+</ng-template>
 
 <!--</div>-->

@@ -42,7 +42,6 @@ export class DepartmentsListComponent implements OnInit {
   onAddDepartment(department: Department) {
     this.departmentService.add(department)
       .subscribe(res => {
-        // this.departments?.push(department);
         this.departments = [...this.departments, department]
         this.modalRef?.hide();
       });
