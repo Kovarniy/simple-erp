@@ -1,12 +1,22 @@
 <div class="modal-item">
   Название департамента:
   <input type="text" placeholder="Название департамента:"
+         required="true"
+         class="input--blue"
+         [ngClass]="{
+              'empty': !department.name && isSubmitted
+              }"
          [(ngModel)]="department.name">
 </div>
 
 <div class="modal-item">
   Описание департамента:
   <input type="text" placeholder="Описание департамента:"
+         required="true"
+         class="input--blue"
+         [ngClass]="{
+              'empty': !department.description && isSubmitted
+              }"
          [(ngModel)]="department.description">
 </div>
 

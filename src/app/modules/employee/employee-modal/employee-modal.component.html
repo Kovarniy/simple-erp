@@ -1,12 +1,20 @@
 <div class="modal-item">
   Имя сотрудника:
   <input type="text" placeholder="Имя сотрудника"
+         class="input--blue"
+         [ngClass]="{
+          'empty': !employee?.firstName && isSubmitted
+         }"
          [(ngModel)]="employee.firstName">
 </div>
 
 <div class="modal-item">
   Фамилия сотрудника:
   <input type="text" placeholder="Фамилия сотрудника"
+         class="input--blue"
+         [ngClass]="{
+          'empty': !employee?.lastName && isSubmitted
+         }"
          [(ngModel)]="employee.lastName">
 </div>
 
@@ -15,6 +23,9 @@
   <ng-select [items]="departments"
              bindLabel="name"
              bindValue="id"
+             [ngClass]="{
+              'empty': !departmentId && isSubmitted
+              }"
              [(ngModel)]="departmentId">
   </ng-select>
 </div>
@@ -24,7 +35,9 @@
                                           btn i-btn-cancel">
     Отменить
   </button>
-  <button (click)="onChangeEmployee()" class="btn btn-primary">
+  <button name="submitBtn"
+          (click)="onChangeEmployee()"
+          class="btn btn-primary">
     Сохранить
   </button>
 </div>

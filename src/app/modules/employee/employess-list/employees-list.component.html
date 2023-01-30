@@ -2,6 +2,7 @@
             (addModal)="onOpenAddModal(addEmployee)">
 </app-header>
 
+<div class="list-block">
 <cdk-virtual-scroll-viewport appendOnly itemSize="12" class="virtual-scroll">
 <ng-container *cdkVirtualFor="let employee of employees">
   <app-employee-item [employee]="employee"
@@ -19,3 +20,4 @@
     </app-employee-modal>
   </div>
 </ng-template>
+</div>

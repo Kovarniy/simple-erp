@@ -13,3 +13,8 @@
 .modal-buttons--with-margin {
   margin-right: 10px;
 }
+
+
+input.ng-touched.ng-invalid {
+  border: solid red 2px;
+}

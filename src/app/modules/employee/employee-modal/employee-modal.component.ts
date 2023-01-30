@@ -28,6 +28,8 @@ export class EmployeeModalComponent implements OnInit {
 
   departmentId!: number;
 
+  isSubmitted = false;
+
   constructor(private departmentService: DepartmentService) {
     this.setEmptyEmployee();
   }
@@ -48,6 +50,11 @@ export class EmployeeModalComponent implements OnInit {
   }
 
   onChangeEmployee() {
+    if (!this.employee?.firstName || !this.employee?.lastName || !this.departmentId) {
+      this.isSubmitted = true;
+      return;
+    }
+
     this.employee.departmentId = this.departmentId;
     this.changeEmployee.emit(this.employee);
   }

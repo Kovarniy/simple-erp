@@ -22,6 +22,8 @@ export class DepartmentModalComponent implements OnInit {
 
   department!: Department;
 
+  isSubmitted = false;
+
   constructor() {
     this.setEmptyDepartment();
   }
@@ -30,6 +32,11 @@ export class DepartmentModalComponent implements OnInit {
   }
 
   onChangeDepartment() {
+    if (!this.department?.name || !this.department?.description) {
+      this.isSubmitted = true;
+      return;
+    }
+
     this.changeDepartment.emit(this.department);
   }
 
