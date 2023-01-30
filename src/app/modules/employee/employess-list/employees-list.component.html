@@ -2,13 +2,15 @@
   Добавить
 </button>
 
-<ng-container *ngFor="let employee of employees">
+<cdk-virtual-scroll-viewport appendOnly itemSize="12" class="virtual-scroll">
+<ng-container *cdkVirtualFor="let employee of employees">
   <app-employee-item [employee]="employee"
                      (change)="onChangeEmployee(employee)"
                      (delete)="onDelete(employee.id)"
   >
   </app-employee-item>
 </ng-container>
+</cdk-virtual-scroll-viewport>
 
 <ng-template #addEmployee>
   <div class="modal-body">

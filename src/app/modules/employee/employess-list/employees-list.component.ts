@@ -12,7 +12,7 @@ import {switchMap} from "rxjs";
 })
 export class EmployeesListComponent implements OnInit {
 
-  employees?: Employee[];
+  employees: Employee[] = [];
 
   modalRef?: BsModalRef;
 
@@ -52,7 +52,7 @@ export class EmployeesListComponent implements OnInit {
   onAddEmployee(employee: Employee) {
     this.employeeService.add(employee)
       .subscribe(res => {
-        this.employees?.push(employee);
+        this.employees = [...this.employees, employee];
         this.modalRef?.hide();
       });
   }

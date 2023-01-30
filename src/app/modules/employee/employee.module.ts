@@ -7,6 +7,7 @@ import { EmployeeModalComponent } from './employee-modal/employee-modal.componen
 import {BsModalService, ModalModule} from "ngx-bootstrap/modal";
 import {FormsModule} from "@angular/forms";
 import {NgSelectModule} from "@ng-select/ng-select";
+import {ScrollingModule} from '@angular/cdk/scrolling';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {NgSelectModule} from "@ng-select/ng-select";
     ModalModule,
     EmployeeRoutingModule,
     FormsModule,
-    NgSelectModule
+    NgSelectModule,
+    ScrollingModule
   ],
   providers: [
     BsModalService

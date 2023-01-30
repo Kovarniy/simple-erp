@@ -6,6 +6,7 @@ import {DepartmentItemComponent} from "./department-item/department-item.compone
 import { DepartmentModalComponent } from './department-modal/department-modal.component';
 import {BsModalService, ModalModule} from "ngx-bootstrap/modal";
 import {FormsModule} from "@angular/forms";
+import {ScrollingModule} from "@angular/cdk/scrolling";
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import {FormsModule} from "@angular/forms";
     CommonModule,
     DepartmentRoutingModule,
     ModalModule,
-    FormsModule
+    FormsModule,
+    ScrollingModule
   ],
   providers: [
     BsModalService

@@ -10,7 +10,7 @@ import {BsModalRef, BsModalService} from "ngx-bootstrap/modal";
 })
 export class DepartmentsListComponent implements OnInit {
 
-  departments?: Department[];
+  departments: Department[] = [];
   modalRef?: BsModalRef;
 
   constructor(private departmentService: DepartmentService,
@@ -42,7 +42,8 @@ export class DepartmentsListComponent implements OnInit {
   onAddDepartment(department: Department) {
     this.departmentService.add(department)
       .subscribe(res => {
-        this.departments?.push(department);
+        // this.departments?.push(department);
+        this.departments = [...this.departments, department]
         this.modalRef?.hide();
       });
   }
