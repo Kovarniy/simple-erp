@@ -1,18 +1,22 @@
 <div class="department">
 
   <div class="department__info">
-    Департамент: {{department?.name}}
-    Описание: {{department?.description}}
+    <div class="department__item">
+      Департамент: {{department?.name}}
+    </div>
+    <div class="department__item">
+      Описание: {{department?.description}}
+    </div>
   </div>
 
   <div class="department__actions">
     <fa-icon [icon]="faEdit"
              [size]="'xl'"
-             class="clickable-element action-item"
+             class="clickable-element action-item margin-right"
              (click)="onOpenEditModal(editDepartment)">
     </fa-icon>
     <fa-icon [icon]="faRemove"
-             [size]="'xl'"
+             [size]="'2xl'"
              class="clickable-element action-item"
              (click)="onDelete()">
     </fa-icon>
